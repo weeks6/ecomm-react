@@ -1,4 +1,35 @@
-.App {
-  font-family: sans-serif;
-  text-align: center;
+@import url("https://fonts.googleapis.com/css2?family=Jost:wght@300;400;700&family=Rubik:wght@700&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Two+Tone|");
+
+/* @import "./blocks/header.css" */
+
+:root {
+  --color-dark: #222a3b;
+  --color-purple: #8f5894;
+  --color-white: #f8fafd;
+  --container-margin: 30px;
+}
+
+body {
+  margin: 0;
+  font-family: "Jost", sans-serif;
+}
+
+.container {
+  max-width: 1280px;
+  width: calc(100% - var(--container-margin));
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.btn {
+  outline: none;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  border: 1px transparent solid;
+}
+
+.btn:focus-visible {
+  border: 1px var(--color-dark) solid;
 }
