@@ -35,6 +35,12 @@
   cursor: pointer;
   margin-left: 32px;
   border: 1px transparent solid;
+  transition: all 0.15s ease-in-out;
+}
+
+.header__menu:hover {
+  color: var(--color-purple);
+  filter: brightness(2);
 }
 
 .header__menu:focus-visible {

@@ -22,6 +22,10 @@
   justify-content: space-between;
 }
 
+.promo-banner:hover > .promo-banner__img {
+  transform: scale(1.1);
+}
+
 .promo-banner .promo__heading {
   margin: 0;
   font-family: Rubik;
@@ -46,6 +50,7 @@
   object-fit: cover;
   height: 100%;
   z-index: -1;
+  transition: all 0.15s ease-in-out;
 }
 
 .promo-banner .promo__link {
