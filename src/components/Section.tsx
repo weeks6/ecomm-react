@@ -1,9 +1,17 @@
-import React from 'react'
+import React from "react";
 
-import { NavLink } from 'react-router-dom'
-import Card from "./Card"
+import { NavLink } from "react-router-dom";
+import Card from "./Card";
 
-const Section = ({ id, title, books }) => {
+import { Book } from "../store/store";
+
+interface Props {
+  id: Number;
+  title: String;
+  books: Book[];
+}
+
+const Section = ({ id, title, books }: Props) => {
   return (
     <section className="products container">
       <h2 className="products__heading">
@@ -26,7 +34,7 @@ const Section = ({ id, title, books }) => {
         ))}
       </ul>
     </section>
-  )
-}
+  );
+};
 
-export default Section
+export default Section;
