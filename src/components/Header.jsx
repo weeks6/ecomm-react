@@ -3,6 +3,8 @@ import "../blocks/header.css";
 import LogoImage from "../img/logo_white.svg";
 import CatalogMenu from "./CatalogMenu";
 
+import { NavLink } from "react-router-dom";
+
 const Header = () => {
   const [isCatalogMenuOpened, setIsCatalogMenuOpened] = useState(false);
 
@@ -14,7 +16,9 @@ const Header = () => {
     <header className="header">
       <div className="header__container container">
         <div className="header-part">
-          <img src={LogoImage} alt="Логотип Volu." className="header__logo" />
+          <NavLink to="/">
+            <img src={LogoImage} alt="Логотип Volu." className="header__logo" />
+          </NavLink>
           <button
             className="btn header__menu"
             tabIndex="1"
@@ -27,15 +31,15 @@ const Header = () => {
           </button>
         </div>
         <nav className="header-part">
-          <button className="btn header__nav-btn">
+          <NavLink to="/order" className="btn header__nav-btn">
             <span className="material-icons">local_shipping</span>
-          </button>
-          <button className="btn header__nav-btn">
+          </NavLink>
+          <NavLink to="/cart" className="btn header__nav-btn">
             <span className="material-icons">shopping_cart</span>
-          </button>
-          <button className="btn header__nav-btn">
+          </NavLink>
+          <NavLink to="/profile" className="btn header__nav-btn">
             <span className="material-icons">account_circle</span>
-          </button>
+          </NavLink>
         </nav>
       </div>
       <CatalogMenu open={isCatalogMenuOpened} handleMenu={onOpenChange} />

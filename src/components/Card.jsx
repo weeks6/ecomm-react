@@ -1,13 +1,14 @@
+import { NavLink } from "react-router-dom";
 import Placeholder from "../img/book_cover_placeholder.png";
 
-const Card = ({ title, author, price, currency }) => {
+const Card = ({ id, title, author, price, currency }) => {
   return (
     <>
-      <article href="/" className="product-card">
+      <article className="product-card">
         <div className="product-card__body">
-          <a href="">
+          <NavLink to={"/book/" + id}>
             <img src={Placeholder} alt="" className="product-card__image" />
-          </a>
+          </NavLink>
           <div className="product-card__info">
             <h3 className="product-card__title">{title}</h3>
             <span className="product-card__author">{author}</span>
@@ -20,8 +21,7 @@ const Card = ({ title, author, price, currency }) => {
               <span className="material-icons">more_horiz</span>
             </button>
             <span className="product-card__price">
-              {price}
-              {currency}
+              {price}₽
             </span>
           </div>
         </div>
