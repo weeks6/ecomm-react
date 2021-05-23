@@ -1,2 +1,2 @@
 # ecomm-react
-Created with CodeSandbox
+this is how you should not do an e commerce project in react
