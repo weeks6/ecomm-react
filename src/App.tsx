@@ -1,4 +1,5 @@
 import "./styles.css";
+import "./blocks/button.css";
 import Header from "./components/Header";
 import Content from "./components/Content";
 

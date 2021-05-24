@@ -1,16 +1,34 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { NavLink, useLocation } from "react-router-dom";
+
 import "../blocks/header.css";
+
 import LogoImage from "../img/logo_white.svg";
 import CatalogMenu from "./CatalogMenu";
+import Popup from "./Popup";
+import SignIn from "./Auth/SignIn";
 
-import { NavLink } from "react-router-dom";
+import { useAuth } from "../store/store";
 
 const Header = () => {
   const [isCatalogMenuOpened, setIsCatalogMenuOpened] = useState(false);
+  const [isSigninPopupOpened, setIsSigninPopupOpened] = useState(false);
+
+  const user = useAuth((state) => state.user);
 
   const onOpenChange = (value: boolean) => {
     setIsCatalogMenuOpened(value);
   };
+
+  const onSigninPopupChange = (value: boolean) => {
+    setIsSigninPopupOpened(value);
+  };
+
+  const location = useLocation();
+
+  useEffect(() => {
+    setIsCatalogMenuOpened(false);
+  }, [location]);
 
   return (
     <header className="header">
@@ -31,18 +49,47 @@ const Header = () => {
           </button>
         </div>
         <nav className="header-part">
-          <NavLink to="/order" className="btn header__nav-btn">
+          <NavLink
+            to="/order"
+            className="btn header__nav-btn"
+            activeClassName="header__nav-btn_active"
+          >
             <span className="material-icons">local_shipping</span>
           </NavLink>
-          <NavLink to="/cart" className="btn header__nav-btn">
+          <NavLink
+            to="/cart"
+            className="btn header__nav-btn"
+            activeClassName="header__nav-btn_active"
+          >
             <span className="material-icons">shopping_cart</span>
           </NavLink>
-          <NavLink to="/profile" className="btn header__nav-btn">
-            <span className="material-icons">account_circle</span>
-          </NavLink>
+
+          {user ? (
+            <NavLink
+              to="/profile"
+              className="btn header__nav-btn"
+              activeClassName="header__nav-btn_active"
+            >
+              <span className="material-icons">account_circle</span>
+            </NavLink>
+          ) : (
+            <button
+              className="btn header__nav-btn"
+              onClick={() => onSigninPopupChange(true)}
+            >
+              <span className="material-icons">account_circle</span>
+            </button>
+          )}
         </nav>
       </div>
       <CatalogMenu open={isCatalogMenuOpened} handleMenu={onOpenChange} />
+      <Popup open={isSigninPopupOpened} handlePopup={onSigninPopupChange}>
+        <SignIn
+          handleSubmit={() => {
+            onSigninPopupChange(false);
+          }}
+        />
+      </Popup>
     </header>
   );
 };

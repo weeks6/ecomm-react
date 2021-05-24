@@ -1,0 +1,14 @@
+.button__main {
+  font-family: Jost;
+  font-weight: 700;
+  font-size: 16px;
+  border: 2px solid var(--color-purple);
+  border-radius: 8px;
+  padding: 6px 18px;
+  transition: all 0.2s ease-in-out;
+}
+
+.button__main:hover {
+  background-color: var(--color-purple);
+  filter: brightness(1.3);
+}

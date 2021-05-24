@@ -11,6 +11,10 @@ interface Props {
 const CatalogMenu = ({ open, handleMenu }: Props) => {
   const [isOpen, setIsOpen] = useState(open);
 
+  useEffect(() => {
+    setIsOpen(open);
+  }, [open]);
+
   const categories = useBooks((state) => state.categories);
 
   const menuSection = {
@@ -23,10 +27,6 @@ const CatalogMenu = ({ open, handleMenu }: Props) => {
       return item;
     }),
   };
-
-  useEffect(() => {
-    setIsOpen(open);
-  }, [open]);
 
   return (
     <>

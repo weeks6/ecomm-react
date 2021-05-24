@@ -15,11 +15,37 @@ export type Category = {
   books: Book[];
 };
 
+export enum Status {
+  PLACED,
+  IN_PROGRESS,
+  BEING_DELIVERED,
+  DELIVERED,
+  CLOSED,
+  CANCELED,
+}
+
+export type Cart = {
+  content: Book[];
+};
+
+export type Order = {
+  content: Book[];
+  date: Date;
+  status: Status;
+};
+
+export type User = {
+  name: string;
+  email: string;
+  avatar: string;
+  cart: Cart;
+  orders: Order[];
+};
+
+// Fake data
 const Categories: Category[] = [];
 const books: Book[] = [];
-
 let counter = 1;
-
 for (let index = 0; index < 5; index++) {
   books.push({
     id: counter,
@@ -58,4 +84,14 @@ for (let index = 0; index < 3; index++) {
 
 export const useBooks = create(() => ({
   categories: Categories,
+}));
+
+type useAuthStore = {
+  user: User | null;
+  setUser: (user: User | null) => void;
+};
+
+export const useAuth = create<useAuthStore>((set) => ({
+  user: null,
+  setUser: (user: User | null) => set(() => ({ user: user })),
 }));

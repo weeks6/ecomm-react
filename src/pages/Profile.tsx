@@ -1,11 +1,10 @@
-import React from 'react'
+import React from "react";
+import { useAuth } from "../store/store";
 
 function Profile() {
-  return (
-    <div>
-      Profile
-    </div>
-  )
+  const { user } = useAuth();
+
+  return <div>{user?.email}</div>;
 }
 
-export default Profile
+export default Profile;
