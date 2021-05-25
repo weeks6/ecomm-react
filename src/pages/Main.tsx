@@ -6,10 +6,10 @@ import Arrow from "../img/arrow_icon.png";
 
 import Section from "../components/Section";
 
-import { useBooks } from "../store/store";
+import { useBooks, meCategory, haloCategory } from "../store/store";
 
 function Main() {
-  const categories = useBooks((state) => state.categories);
+  const categories = useBooks((state) => new Set(state.books.map(book => book.category)));
 
   return (
     <>
@@ -18,7 +18,7 @@ function Main() {
           <li className="promo-banner promo-banner_large">
             <h1 className="promo__heading">20 лет серии Halo</h1>
             <NavLink
-              to={"/category/" + categories[2].id}
+              to={"/category/" + haloCategory.id}
               className="promo__link"
             >
               Каталог
@@ -29,7 +29,7 @@ function Main() {
           <li className="promo-banner">
             <h1 className="promo__heading">Mass Effect возвращается</h1>
             <NavLink
-              to={"/category/" + categories[1].id}
+              to={"/category/" + meCategory.id}
               className="promo__link"
             >
               Каталог
@@ -40,7 +40,7 @@ function Main() {
           <li className="promo-banner">
             <h1 className="promo__heading">Mass Effect возвращается</h1>
             <NavLink
-              to={"/category/" + categories[1].id}
+              to={"/category/" + meCategory.id}
               className="promo__link"
             >
               Каталог
@@ -51,14 +51,16 @@ function Main() {
         </ul>
       </section>
 
-      {categories.map((categorie) => (
-        <Section
-          key={categorie.id}
-          id={categorie.id}
-          title={categorie.title}
-          books={categorie.books}
-        />
-      ))}
+      {Array.from(categories).map((category) => {
+        const categoryBooks = useBooks((state) => state.books.filter(book => book.category.id === category.id))
+
+        return (<Section
+          key={category.id}
+          id={category.id}
+          title={category.title}
+          books={categoryBooks}
+        />)
+        })}
     </>
   );
 }

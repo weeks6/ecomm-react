@@ -9,15 +9,12 @@ import NotFound from "../components/NotFound";
 function CategoryComponent() {
   let { id } = useParams<{ id: string }>();
 
-  const categories = useBooks((state) => state.categories);
-  let category: Category | null = null;
+  const books = useBooks((state) => state.books.filter(v => v.category.id === parseInt(id)));
 
-  if (id !== undefined) {
-    category = categories.filter((v) => v.id === parseInt(id))[0];
-  }
+  const bookSample = books[0]
 
-  return category ? (
-    <Section id={parseInt(id)} title={category.title} books={category.books} />
+  return books ? (
+    <Section id={parseInt(id)} title={bookSample.category.title} books={books} />
   ) : (
     <NotFound />
   );

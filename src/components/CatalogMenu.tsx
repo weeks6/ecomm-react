@@ -15,11 +15,11 @@ const CatalogMenu = ({ open, handleMenu }: Props) => {
     setIsOpen(open);
   }, [open]);
 
-  const categories = useBooks((state) => state.categories);
+  const categories = useBooks((state) => new Set(state.books.map(book => book.category)));
 
   const menuSection = {
     title: "Популярные",
-    items: categories.map((category) => {
+    items: Array.from(categories).map((category) => {
       const item: Item = {
         text: category.title,
         url: `/category/${category.id}`,

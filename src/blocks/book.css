@@ -1,0 +1,233 @@
+.book-page {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 40px;
+}
+
+.book__container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.book__image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 20px;
+    background-color: var(--color-white);
+    border-radius: 12px;
+    max-width: 389px;
+    max-height: 389px;
+}
+
+.book__image {
+    width: 65%;
+}
+
+.book__title {
+    margin: 0;
+    margin-bottom: 4px;
+    font-family: Jost;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 35px;
+    letter-spacing: 0.02em;
+    color: #000000;
+}
+
+.book__author {
+    margin: 0;
+    margin-bottom: 4px;
+    opacity: .5;
+    font-family: Jost;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 23px;
+    letter-spacing: 0.02em;
+    color: var(--color-dark);
+}
+
+.book__description {
+    margin: 0;
+    margin-bottom: 16px;
+    font-family: Jost;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 23px;
+    display: flex;
+    align-items: center;
+    letter-spacing: 0.02em;
+    color: var(--color-dark);
+    opacity: 0.8;
+}
+
+.book__link {
+    display: flex;
+    text-decoration: none;
+    align-items: center;
+    margin-bottom: 64px;
+}
+
+.book__link:hover .book__link-icon {
+    transform: translateX(8px);
+}
+
+.book__link-text {
+    font-family: Jost;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 26px;
+    display: flex;
+    align-items: center;
+    letter-spacing: 0.02em;
+    color: var(--color-purple);
+}
+
+.book__link-icon {
+    transition: all .2s ease-in-out;
+    margin-left: 8px;
+    color: var(--color-purple);
+}
+
+.book__price {
+    font-family: Jost, sans-serif;
+    margin-bottom: 16px;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 35px;
+    display: flex;
+    align-items: center;
+    letter-spacing: 0.02em;
+    color: #000000;
+}
+
+.book__content {
+    display: flex;
+    flex-direction: column;
+}
+
+.book__actions {
+    display: flex;
+}
+
+.book__cta {
+    font-family: Jost, sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 24px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    letter-spacing: 0.02em;
+    color: var(--color-dark);
+    padding: 8px 16px;
+    border: 1px solid var(--color-purple);
+    border-radius: 8px;
+    transition: all .2s ease-in-out;
+}
+
+.book__cta:hover {
+    background-color: var(--color-purple);
+    color: var(--color-white)
+}
+
+.book__cta-text {
+    margin-right: 10px;
+}
+
+.book__cta_fav {
+    padding: 8px;
+    margin-left: 8px;
+}
+
+.reviews {
+    overflow: hidden;
+}
+
+.reviews__container_empty {
+    background: var(--color-white);
+    width: 100%;
+    border-radius: 12px;
+    height: 64px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.reviews__messsage {
+    font-size: 24px;
+    opacity: .3;
+}
+
+.reviews__container {
+    width: 100%;
+    overflow-x: scroll;
+    display: flex;
+    scrollbar-width: 0px;
+}
+
+.reviews__container::-webkit-scrollbar {
+    display: none;
+}
+
+.review-card {
+    background: var(--color-white);
+    border-radius: 12px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    max-width: 300px;
+    min-width: 300px;
+    margin-left: 30px;
+}
+
+.review-card:first-of-type {
+    margin-left: 0;
+}
+
+.review-card__header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.review-card__user {
+    display: flex;
+    flex-direction: column;
+    margin-left: 14px;
+}
+
+.review-card__user-avatar {
+    display: block;
+    width: 56px;
+    height: 56px;
+    border-radius: 100%;
+}
+
+.review-card__user-name {
+    margin: 0;
+    font-family: Jost;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 24px;
+    color: #222A3B;
+}
+
+.review-card__body {
+    margin: 0;
+    font-family: Jost;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: 0.06em;
+    color: var(--color-dark);
+    opacity: 0.8;
+}

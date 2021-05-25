@@ -20,6 +20,7 @@ export const signUp = async (user: UserAuth) => {
 export const signIn = async (user: UserAuth) => {
   return new Promise<User | null>((resolve, reject) => {
     const fakeUser: User = {
+      id: 1,
       avatar:
         "https://sun9-75.userapi.com/impg/uzx-eTxFcXuMibL9Ifq4w0C3Wqk69GIBeIuRzQ/8G6Bu_OZeGY.jpg?size=941x1080&quality=96&sign=cf74479a82d41737dd44fd4beaf9f39f&type=album",
       cart: {
@@ -28,6 +29,8 @@ export const signIn = async (user: UserAuth) => {
       email: user.email,
       name: user.email,
       orders: [],
+      favourites: [],
+      reviews: []
     };
     setTimeout(() => {
       setAccessToken("bruh moment");

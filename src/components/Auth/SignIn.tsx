@@ -52,11 +52,14 @@ function SignIn({ handleSubmit }: Props) {
       .then((res) => {
         if (res) {
           setUser({
+            id: 1,
             email: res.email,
             orders: res.orders,
             avatar: res.avatar,
             cart: res.cart,
             name: res.name,
+            favourites: res.favourites,
+            reviews: res.reviews
           });
           handleSubmit();
           setIsLoading(false);
