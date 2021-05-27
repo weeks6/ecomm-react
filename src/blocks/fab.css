@@ -3,10 +3,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  bottom: 48px;
-  right: 48px;
-  width: 56px;
-  height: 56px;
+  bottom: 16px;
+  right: 16px;
+  width: 48px;
+  height: 48px;
   border-radius: 100%;
   background-color: var(--color-dark);
   box-shadow: 0px 3px 5px -1px rgb(0 0 0 / 20%),
@@ -18,7 +18,7 @@
 }
 
 .fab span {
-  font-size: 32px;
+  font-size: 28px;
   color: var(--color-white);
 }
 
@@ -30,4 +30,17 @@
   opacity: 0;
   transform: translateY(64px);
   visibility: hidden;
+}
+
+@media screen and (min-width: 768px) {
+  .fab {
+    bottom: 48px;
+    right: 48px;
+    width: 56px;
+    height: 56px;
+  }
+
+  .fab span {
+    font-size: 32px;
+  }
 }
