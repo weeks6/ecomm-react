@@ -1,4 +1,5 @@
 import { NavLink } from "react-router-dom";
+import { useBooks, useCart } from "../store/store";
 
 interface Props {
   id: Number;
@@ -9,6 +10,15 @@ interface Props {
 }
 
 const Card = ({ id, title, author, price, cover }: Props) => {
+  const { cart, addItem } = useCart();
+  const book = useBooks((state) => state.books.find((v) => v.id === id));
+
+  const handleCartAdd = () => {
+    if (book) {
+      addItem(book);
+    }
+  };
+
   return (
     <>
       <article className="product-card">
@@ -21,7 +31,7 @@ const Card = ({ id, title, author, price, cover }: Props) => {
             <span className="product-card__author">{author}</span>
           </div>
           <div className="product-card__footer">
-            <button className="btn product-card__cart">
+            <button className="btn product-card__cart" onClick={handleCartAdd}>
               <span className="material-icons">shopping_cart</span>
             </button>
             <button className="btn product-card__more">

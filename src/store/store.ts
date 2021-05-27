@@ -9,7 +9,7 @@ export type Book = {
   price: number;
   description: string;
   category: Category;
-  reviews: number[]
+  reviews: number[];
 };
 
 export type Category = {
@@ -27,7 +27,10 @@ export enum Status {
 }
 
 export type Cart = {
-  content: Book[];
+  content: {
+    book: Book;
+    amount: number;
+  }[];
 };
 
 export type Order = {
@@ -37,7 +40,7 @@ export type Order = {
 };
 
 export type User = {
-  id: number,
+  id: number;
   name: string;
   email: string;
   avatar: string;
@@ -48,54 +51,55 @@ export type User = {
 };
 
 export type Review = {
-  id: number,
-  userId: number,
-  rating: number,
-  content: string
-}
+  id: number;
+  userId: number;
+  rating: number;
+  content: string;
+};
 
 type useAuthStore = {
   user: User | null;
   setUser: (user: User | null) => void;
 };
 
-
 // Fake data
 export const newCategory: Category = {
   id: 1,
-  title: "Новинки"
-}
+  title: "Новинки",
+};
 
 export const haloCategory: Category = {
   id: 2,
-  title: "Halo"
-}
+  title: "Halo",
+};
 
 export const meCategory: Category = {
   id: 3,
-  title: "Mass Effect"
-}
+  title: "Mass Effect",
+};
 
 const reviews: Review[] = [
   {
     id: 1,
     userId: 1,
-    content: "Точно не проплаченный отзыв на книгу от какого-нибудь рандома из интернетов",
+    content:
+      "Точно не проплаченный отзыв на книгу от какого-нибудь рандома из интернетов",
     rating: 4,
   },
   {
     id: 2,
     userId: 2,
-    content: "Точно не проплаченный отзыв на книгу от какого-нибудь рандома из интернетов",
+    content:
+      "Точно не проплаченный отзыв на книгу от какого-нибудь рандома из интернетов",
     rating: 3,
-  }
-]
+  },
+];
 
 const users: User[] = [
   {
     id: 2,
     avatar:
-    "https://sun9-75.userapi.com/impg/uzx-eTxFcXuMibL9Ifq4w0C3Wqk69GIBeIuRzQ/8G6Bu_OZeGY.jpg?size=941x1080&quality=96&sign=cf74479a82d41737dd44fd4beaf9f39f&type=album",
+      "https://sun9-75.userapi.com/impg/uzx-eTxFcXuMibL9Ifq4w0C3Wqk69GIBeIuRzQ/8G6Bu_OZeGY.jpg?size=941x1080&quality=96&sign=cf74479a82d41737dd44fd4beaf9f39f&type=album",
     cart: {
       content: [],
     },
@@ -103,9 +107,9 @@ const users: User[] = [
     name: "bruhawdaw",
     orders: [],
     favourites: [],
-    reviews: []
-  }
-]
+    reviews: [],
+  },
+];
 
 const books: Book[] = [];
 let counter = 1;
@@ -122,7 +126,7 @@ for (let index = 0; index < 5; index++) {
       что судить книгу по обложке нельзя, но при этом покупают
       книги только из-зза обложек или, иногда, авторов.`,
     reviews: [2],
-    category: newCategory  
+    category: newCategory,
   });
   counter += 1;
 }
@@ -139,7 +143,7 @@ for (let index = 0; index < 7; index++) {
       что судить книгу по обложке нельзя, но при этом покупают
       книги только из-зза обложек или, иногда, авторов.`,
     reviews: [1, 2],
-    category: haloCategory  
+    category: haloCategory,
   });
   counter += 1;
 }
@@ -156,27 +160,39 @@ for (let index = 0; index < 7; index++) {
       что судить книгу по обложке нельзя, но при этом покупают
       книги только из-зза обложек или, иногда, авторов.`,
     reviews: [],
-    category: meCategory  
+    category: meCategory,
   });
   counter += 1;
 }
 
 type useBooksStore = {
-  books: Book[],
-}
+  books: Book[];
+};
 
 type useReviewsStore = {
-  reviews: Review[]
-}
+  reviews: Review[];
+};
 
 type useUsersStore = {
-  users: User[]
-}
+  users: User[];
+};
+
+type useCartStore = {
+  cart: Cart;
+  addItem: (book: Book) => void;
+  editItem: (
+    id: number,
+    book: {
+      book: Book;
+      amount: number;
+    }
+  ) => void;
+  removeItem: (id: number) => void;
+};
 
 export const useBooks = create<useBooksStore>(() => ({
   books,
 }));
-
 
 export const useAuth = create<useAuthStore>((set) => ({
   user: null,
@@ -184,13 +200,79 @@ export const useAuth = create<useAuthStore>((set) => ({
 }));
 
 export const useReviews = create<useReviewsStore>(() => ({
-  reviews
-})) 
+  reviews,
+}));
 
-export const useRecommendations = create(set => ({
-  recommendations: {}
-}))
+export const useRecommendations = create((set) => ({
+  recommendations: {},
+}));
 
 export const useUsers = create<useUsersStore>(() => ({
-  users
-}))
+  users,
+}));
+
+export const useCart = create<useCartStore>((set) => ({
+  cart: {
+    content: [],
+  },
+  addItem: (book: Book) =>
+    set((state) => {
+      const existingBook = state.cart.content.find((v) => v.book === book);
+      if (existingBook) {
+        state.editItem(book.id, {
+          book,
+          amount: existingBook.amount + 1,
+        });
+        return {
+          cart: {
+            content: state.cart.content,
+          },
+        };
+      } else {
+        return {
+          cart: {
+            content: [
+              {
+                book,
+                amount: 1,
+              },
+              ...state.cart.content,
+            ],
+          },
+        };
+      }
+    }),
+  editItem: (
+    id: number,
+    value: {
+      book: Book;
+      amount: number;
+    }
+  ) =>
+    set((state) => {
+      const bookToEdit = state.cart.content.findIndex((v) => v.book.id === id);
+
+      return {
+        cart: {
+          content: [
+            ...state.cart.content.slice(0, bookToEdit),
+            {
+              book: value.book,
+              amount: value.amount,
+            },
+            ...state.cart.content.slice(
+              bookToEdit,
+              state.cart.content.length - 1
+            ),
+          ],
+        },
+      };
+    }),
+
+  removeItem: (id: number) =>
+    set((state) => ({
+      cart: {
+        content: [...state.cart.content.filter((v) => v.book.id !== id)],
+      },
+    })),
+}));

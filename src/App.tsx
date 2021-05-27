@@ -1,9 +1,10 @@
 import "./styles.css";
 import "./blocks/button.css";
+import "./blocks/loading.css";
+import { HashRouter as Router } from "react-router-dom";
 import Header from "./components/Header";
 import Content from "./components/Content";
-
-import { HashRouter as Router } from "react-router-dom";
+import UpButton from "./components/UpButton";
 
 export default function App() {
   return (
@@ -11,6 +12,7 @@ export default function App() {
       <Router>
         <Header />
         <Content />
+        <UpButton />
       </Router>
     </div>
   );

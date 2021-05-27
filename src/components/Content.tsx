@@ -10,7 +10,7 @@ import Order from "../pages/Order";
 
 const Content = () => {
   return (
-    <>
+    <main className="main">
       <Switch>
         <Route exact path="/">
           <Main />
@@ -31,7 +31,7 @@ const Content = () => {
           <Book />
         </Route>
       </Switch>
-    </>
+    </main>
   );
 };
 

@@ -7,8 +7,8 @@
   margin: 0;
   padding: 0;
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr;
-  column-gap: 20px;
+  grid-template-columns: 1fr;
+  row-gap: 20px;
 }
 
 .promo-banner {
@@ -150,6 +150,7 @@
   display: block;
   background-color: var(--color-white);
   text-decoration: none;
+  border-radius: 16px;
 }
 
 .product-card__body {
@@ -263,4 +264,12 @@
   letter-spacing: -0.02em;
   color: var(--color-dark);
   margin-left: auto;
+}
+
+@media screen and (min-width: 768px) {
+  .promo-banners {
+    grid-template-columns: 2fr 1fr 1fr;
+    column-gap: 20px;
+    row-gap: 0;
+  }
 }

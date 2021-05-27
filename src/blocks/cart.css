@@ -1,0 +1,135 @@
+.cart-card {
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: var(--color-white);
+  border-radius: 12px;
+}
+
+.cart-card__image {
+  width: 80px;
+  height: 80px;
+}
+
+.cart-card__content {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  margin-left: 40px;
+}
+
+.cart-card__title {
+  margin: 0;
+  margin-bottom: 4px;
+  font-family: Jost;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 35px;
+  align-items: center;
+  letter-spacing: 0.02em;
+  color: #000000;
+}
+
+.cart-card__author {
+  font-family: Jost;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 23px;
+  letter-spacing: 0.02em;
+  color: var(--color-dark);
+  opacity: 0.5;
+}
+
+.cart-card__price {
+  margin-left: 80px;
+  font-family: Jost, sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 29px;
+  letter-spacing: 0.02em;
+  color: #000000;
+}
+
+.cart-page {
+  display: grid;
+  grid-template-areas:
+    "title title title"
+    "cart cart checkout";
+  row-gap: 20px;
+  column-gap: 36px;
+}
+
+.cart-page__title {
+  grid-area: title;
+  font-family: Jost;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 32px;
+  line-height: 46px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  letter-spacing: 0.02em;
+  color: #000000;
+  margin: 0;
+}
+
+.cart-page__content {
+  grid-area: cart;
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.cart-card__amount {
+  transition: all 0.2s ease-in-out;
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+}
+
+.cart-card__btn {
+  width: 28px;
+  height: 28px;
+  border-radius: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--color-white);
+  transition: all 0.2s ease-in-out;
+}
+
+.cart-card__btn:hover {
+  filter: brightness(0.9);
+}
+
+.cart-card__btn_icon {
+  font-size: 16px;
+  color: var(--color-dark);
+}
+
+.cart-card__amount-value {
+  font-family: Jost;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 24px;
+  letter-spacing: 0.02em;
+  color: #000000;
+  margin-left: 12px;
+  margin-right: 12px;
+}
+
+@media screen and (min-width: 1024px) {
+  .cart-card:hover .cart-card__amount {
+    opacity: 1;
+  }
+  .cart-card__amount {
+    opacity: 0;
+  }
+}

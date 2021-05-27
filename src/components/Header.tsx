@@ -8,13 +8,14 @@ import CatalogMenu from "./CatalogMenu";
 import Popup from "./Popup";
 import SignIn from "./Auth/SignIn";
 
-import { useAuth } from "../store/store";
+import { useAuth, useCart } from "../store/store";
 
 const Header = () => {
   const [isCatalogMenuOpened, setIsCatalogMenuOpened] = useState(false);
   const [isSigninPopupOpened, setIsSigninPopupOpened] = useState(false);
 
   const user = useAuth((state) => state.user);
+  const { cart } = useCart();
 
   const onOpenChange = (value: boolean) => {
     setIsCatalogMenuOpened(value);
@@ -62,6 +63,11 @@ const Header = () => {
             activeClassName="header__nav-btn_active"
           >
             <span className="material-icons">shopping_cart</span>
+            {cart.content.length ? (
+              <span className="header__cart-counter">
+                {cart.content.length}
+              </span>
+            ) : null}
           </NavLink>
 
           {user ? (

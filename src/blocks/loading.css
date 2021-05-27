@@ -1,0 +1,38 @@
+.loading {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loading::after {
+  width: 16px;
+  height: 16px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  content: "";
+  position: absolute;
+  --loader-speed: 0.75s;
+  --loader-color: var(--color-purple);
+  --loader-size: 16px;
+  --loader-thickness: 4px;
+
+  animation-name: rotate-forever;
+  animation-duration: var(--loader-speed);
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  border: var(--loader-thickness) solid var(--loader-color);
+  border-right-color: transparent;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+@keyframes rotate-forever {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}

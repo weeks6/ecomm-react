@@ -30,12 +30,12 @@ export const signIn = async (user: UserAuth) => {
       name: user.email,
       orders: [],
       favourites: [],
-      reviews: []
+      reviews: [],
     };
     setTimeout(() => {
       setAccessToken("bruh moment");
       resolve(fakeUser);
-    }, 1000);
+    }, 120000);
   });
 };
 

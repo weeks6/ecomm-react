@@ -59,7 +59,7 @@ function SignIn({ handleSubmit }: Props) {
             cart: res.cart,
             name: res.name,
             favourites: res.favourites,
-            reviews: res.reviews
+            reviews: res.reviews,
           });
           handleSubmit();
           setIsLoading(false);
@@ -167,15 +167,15 @@ function SignIn({ handleSubmit }: Props) {
           </span>
         </div>
         <button
-          className={
-            isValid
-              ? "btn button__main"
-              : "btn button__main button__main_disabled"
-          }
-          disabled={!isValid}
+          className={`
+            btn button__main
+            ${!isValid && "button__main_disabled"}
+            ${isLoading && "loading"}
+          `}
+          disabled={!isValid || isLoading}
           type="submit"
         >
-          {isLoading ? "..." : "Войти"}
+          Войти
         </button>
       </div>
     </form>

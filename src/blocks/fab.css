@@ -1,0 +1,33 @@
+.fab {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  bottom: 48px;
+  right: 48px;
+  width: 56px;
+  height: 56px;
+  border-radius: 100%;
+  background-color: var(--color-dark);
+  box-shadow: 0px 3px 5px -1px rgb(0 0 0 / 20%),
+    0px 6px 10px 0px rgb(0 0 0 / 14%), 0px 1px 18px 0px rgb(0 0 0 / 12%);
+  transition: all 0.2s ease-in-out;
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.fab span {
+  font-size: 32px;
+  color: var(--color-white);
+}
+
+.fab:hover {
+  filter: brightness(1.25);
+}
+
+.fab.fab_hidden {
+  opacity: 0;
+  transform: translateY(64px);
+  visibility: hidden;
+}
