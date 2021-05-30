@@ -16,6 +16,7 @@
 
 .header-part {
   display: flex;
+  align-items: center;
 }
 
 .header__logo {
@@ -42,6 +43,18 @@
   filter: brightness(2);
 }
 
+.header__profile-btn {
+  margin-left: 20px;
+  color: var(--color-white);
+  transition: all 0.15s ease-in-out;
+  position: relative;
+}
+
+.header__profile-btn:hover .header__profile-img,
+.header__profile-btn_active .header__profile-img {
+  border-color: var(--color-purple);
+}
+
 .header__menu:focus-visible {
   border-radius: 4px;
   border: 1px var(--color-white) solid;
@@ -53,11 +66,21 @@
 }
 
 .header__nav-btn {
+  width: 32px;
+  height: 32px;
   padding: 0;
   color: var(--color-white);
   border: 1px transparent solid;
   transition: all 0.15s ease-in-out;
   position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+}
+
+.header__nav-btn span {
+  transition: all 0.15s ease-in-out;
 }
 
 .header__cart-counter {
@@ -87,6 +110,16 @@
 
 .header__nav-btn:not(.header__nav-btn:first-child) {
   margin-left: 20px;
+}
+
+.header__profile-img {
+  width: 24px;
+  height: 24px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-radius: 100%;
+  border: 2px transparent solid;
+  transition: all 0.15s ease-in-out;
 }
 
 @media screen and (min-width: 768px) {

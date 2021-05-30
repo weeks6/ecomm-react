@@ -73,15 +73,25 @@ const Header = () => {
           {user ? (
             <NavLink
               to="/profile"
-              className="btn header__nav-btn"
-              activeClassName="header__nav-btn_active"
+              className="btn header__profile-btn"
+              activeClassName="header__profile-btn_active"
+              replace
             >
-              <span className="material-icons">account_circle</span>
+              <div
+                className="header__profile-img"
+                style={{
+                  backgroundImage: `url('${user.avatar}')`,
+                }}
+              ></div>
             </NavLink>
           ) : (
             <button
               className="btn header__nav-btn"
-              onClick={() => onSigninPopupChange(true)}
+              onClick={
+                location.pathname === "/profile"
+                  ? () => {}
+                  : () => onSigninPopupChange(true)
+              }
             >
               <span className="material-icons">account_circle</span>
             </button>

@@ -21,7 +21,7 @@ function Book() {
   );
 
   const handleAddCart = () => {
-    addItem(book);
+    addItem(book, 1);
   };
 
   return (

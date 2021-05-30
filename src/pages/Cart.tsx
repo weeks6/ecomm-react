@@ -1,10 +1,10 @@
-import { Book, useCart } from "../store/store";
+import { Book, useAuth, useCart } from "../store/store";
 import "../blocks/cart.css";
 
 import ProductCard from "../components/Cart/ProductCard";
 
 function Cart() {
-  const { cart, editItem, removeItem } = useCart();
+  const { cart, editItem, removeItem, addItem } = useCart();
 
   const handleAmountChange = (
     id: number,
@@ -22,7 +22,7 @@ function Cart() {
 
   return (
     <section className="cart-page container">
-      <h1 className="cart-page__title">Корзина</h1>
+      <h1 className="cart-page__title heading">Корзина</h1>
       <ul className="cart-page__content">
         {cart.content.map((product) => (
           <ProductCard

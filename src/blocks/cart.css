@@ -64,17 +64,6 @@
 
 .cart-page__title {
   grid-area: title;
-  font-family: Jost;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 32px;
-  line-height: 46px;
-  display: flex;
-  align-items: center;
-  text-align: center;
-  letter-spacing: 0.02em;
-  color: #000000;
-  margin: 0;
 }
 
 .cart-page__content {

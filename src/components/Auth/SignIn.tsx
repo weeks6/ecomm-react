@@ -3,7 +3,7 @@ import { ChangeEvent, FormEvent, useEffect, useRef, useState } from "react";
 import "../../blocks/form.css";
 
 import { signIn } from "../../utils/Auth";
-import { useAuth } from "../../store/store";
+import { useAuth, useCart } from "../../store/store";
 
 type SignInForm = {
   email: {
@@ -39,7 +39,8 @@ function SignIn({ handleSubmit }: Props) {
   const [isValid, setIsValid] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
-  const { setUser } = useAuth();
+  const { setUser, user } = useAuth();
+  const { addItem } = useCart();
 
   const handleSignInSubmit = (evt: FormEvent<HTMLFormElement>) => {
     evt.preventDefault();
@@ -61,6 +62,8 @@ function SignIn({ handleSubmit }: Props) {
             favourites: res.favourites,
             reviews: res.reviews,
           });
+          res.cart.content.forEach((v) => addItem(v.book, v.amount));
+
           handleSubmit();
           setIsLoading(false);
         }
@@ -89,7 +92,7 @@ function SignIn({ handleSubmit }: Props) {
   const passwordRef = useRef<HTMLInputElement | null>(null);
 
   useEffect(() => {
-    setTimeout(() => {
+    const timeout = setTimeout(() => {
       setIsValid(
         !!(
           emailRef.current?.validity.valid &&
@@ -97,6 +100,10 @@ function SignIn({ handleSubmit }: Props) {
         )
       );
     }, 300);
+
+    return () => {
+      clearTimeout(timeout);
+    };
   }, []);
 
   return (

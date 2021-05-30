@@ -2,7 +2,7 @@
   max-width: 480px;
 }
 
-.form__title {
+.letter .form__title {
   display: block;
   margin: 0;
   font-family: Jost;
@@ -13,11 +13,8 @@
   display: flex;
   align-items: center;
   letter-spacing: 0.02em;
-  color: var(--color-dark);
+  color: var(--color-white);
   margin-bottom: 36px;
-}
-
-.form__container {
 }
 
 .form__field {
@@ -38,14 +35,14 @@
   padding: 0 4px;
 }
 
-.form__field-input {
+.letter .form__field-input {
   font-family: Jost;
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
   line-height: 20px;
   letter-spacing: 0.02em;
-  color: var(--color-dark);
+  color: var(--color-white);
   padding: 12px 8px;
   min-width: 0;
   position: relative;
@@ -57,15 +54,11 @@
   border-bottom: 2px gray solid;
 }
 
-.form__field-bar {
-  width: 100%;
-  transform: scalex(0) translatey(-2px);
-  transition: all 0.2s ease-in-out;
-  height: 2px;
-  background-color: var(--color-dark);
+.letter .form__field-bar {
+  background-color: var(--color-white);
 }
 
-.form__field-notice {
+.letter .form__field-notice {
   display: block;
   font-size: 0.8rem;
   margin-top: 8px;
@@ -76,41 +69,15 @@
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
-  color: var(--color-dark);
+  color: var(--color-white);
   filter: brightness(0.9);
   transition: all 0.2s ease-in-out;
 }
 
-.form__field-input:invalid ~ .form__field-bar {
-  background-color: tomato;
-  transform: scalex(1) translatey(-2px);
+.letter .button__main {
+  color: var(--color-white);
 }
 
-.form__field-input:invalid:focus ~ .from__field-notice {
-  color: tomato;
-}
-
-.form__field-input:focus ~ .form__label,
-.form__field-input:valid ~ .form__label {
-  transform: translatey(-1.2rem);
-  font-size: 0.9rem;
-}
-
-.form__field-input:focus ~ .form__field-bar {
-  transform: scalex(1) translatey(-2px);
-}
-
-.form__label_raised {
-  transform: translatey(-1.2rem);
-  font-size: 0.9rem;
-}
-
-@media screen and (min-width: 768px) {
-  .form__field {
-    min-width: 300px;
-  }
-
-  .form__field-input {
-    min-width: 300px;
-  }
+.letter .button__main:hover {
+  filter: brightness(0.9);
 }

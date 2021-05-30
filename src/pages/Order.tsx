@@ -1,11 +1,9 @@
-import React from 'react'
+import "../blocks/order.css";
+
+import React from "react";
 
 function Order() {
-  return (
-    <div>
-      Order
-    </div>
-  )
+  return <div>Order</div>;
 }
 
-export default Order
+export default Order;

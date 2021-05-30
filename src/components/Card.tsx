@@ -15,7 +15,7 @@ const Card = ({ id, title, author, price, cover }: Props) => {
 
   const handleCartAdd = () => {
     if (book) {
-      addItem(book);
+      addItem(book, 1);
     }
   };
 

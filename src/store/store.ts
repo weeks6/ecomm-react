@@ -95,23 +95,7 @@ const reviews: Review[] = [
   },
 ];
 
-const users: User[] = [
-  {
-    id: 2,
-    avatar:
-      "https://sun9-75.userapi.com/impg/uzx-eTxFcXuMibL9Ifq4w0C3Wqk69GIBeIuRzQ/8G6Bu_OZeGY.jpg?size=941x1080&quality=96&sign=cf74479a82d41737dd44fd4beaf9f39f&type=album",
-    cart: {
-      content: [],
-    },
-    email: "bbruh@auwdwa",
-    name: "bruhawdaw",
-    orders: [],
-    favourites: [],
-    reviews: [],
-  },
-];
-
-const books: Book[] = [];
+export const books: Book[] = [];
 let counter = 1;
 
 for (let index = 0; index < 5; index++) {
@@ -165,6 +149,33 @@ for (let index = 0; index < 7; index++) {
   counter += 1;
 }
 
+const users: User[] = [
+  {
+    id: 2,
+    avatar:
+      "https://sun9-75.userapi.com/impg/uzx-eTxFcXuMibL9Ifq4w0C3Wqk69GIBeIuRzQ/8G6Bu_OZeGY.jpg?size=941x1080&quality=96&sign=cf74479a82d41737dd44fd4beaf9f39f&type=album",
+    cart: {
+      content: [],
+    },
+    email: "bbruh@auwdwa",
+    name: "bruhawdaw",
+    orders: [
+      {
+        content: [books[0]],
+        date: new Date(2021, 5, 30),
+        status: Status.BEING_DELIVERED,
+      },
+      {
+        content: [books[1], books[2]],
+        date: new Date(2021, 4, 30),
+        status: Status.DELIVERED,
+      },
+    ],
+    favourites: [],
+    reviews: [],
+  },
+];
+
 type useBooksStore = {
   books: Book[];
 };
@@ -179,7 +190,7 @@ type useUsersStore = {
 
 type useCartStore = {
   cart: Cart;
-  addItem: (book: Book) => void;
+  addItem: (book: Book, amount: number) => void;
   editItem: (
     id: number,
     book: {
@@ -215,13 +226,13 @@ export const useCart = create<useCartStore>((set) => ({
   cart: {
     content: [],
   },
-  addItem: (book: Book) =>
+  addItem: (book: Book, amount: number = 1) =>
     set((state) => {
       const existingBook = state.cart.content.find((v) => v.book === book);
       if (existingBook) {
         state.editItem(book.id, {
           book,
-          amount: existingBook.amount + 1,
+          amount: existingBook.amount + amount,
         });
         return {
           cart: {
@@ -234,7 +245,7 @@ export const useCart = create<useCartStore>((set) => ({
             content: [
               {
                 book,
-                amount: 1,
+                amount: amount,
               },
               ...state.cart.content,
             ],
