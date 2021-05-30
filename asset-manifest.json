@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/ecomm-react/static/css/main.7e64a887.chunk.css",
+    "main.js": "/ecomm-react/static/js/main.21c2b420.chunk.js",
+    "main.js.map": "/ecomm-react/static/js/main.21c2b420.chunk.js.map",
+    "runtime-main.js": "/ecomm-react/static/js/runtime-main.3dcced7f.js",
+    "runtime-main.js.map": "/ecomm-react/static/js/runtime-main.3dcced7f.js.map",
+    "static/js/2.120c1a52.chunk.js": "/ecomm-react/static/js/2.120c1a52.chunk.js",
+    "static/js/2.120c1a52.chunk.js.map": "/ecomm-react/static/js/2.120c1a52.chunk.js.map",
+    "index.html": "/ecomm-react/index.html",
+    "static/css/main.7e64a887.chunk.css.map": "/ecomm-react/static/css/main.7e64a887.chunk.css.map",
+    "static/js/2.120c1a52.chunk.js.LICENSE.txt": "/ecomm-react/static/js/2.120c1a52.chunk.js.LICENSE.txt",
+    "static/media/banner.6d96d026.png": "/ecomm-react/static/media/banner.6d96d026.png",
+    "static/media/banner_large.9ebb847c.png": "/ecomm-react/static/media/banner_large.9ebb847c.png",
+    "static/media/book_cover_placeholder.c2afa870.png": "/ecomm-react/static/media/book_cover_placeholder.c2afa870.png",
+    "static/media/logo_white.527fbf50.svg": "/ecomm-react/static/media/logo_white.527fbf50.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.3dcced7f.js",
+    "static/js/2.120c1a52.chunk.js",
+    "static/css/main.7e64a887.chunk.css",
+    "static/js/main.21c2b420.chunk.js"
+  ]
+}
